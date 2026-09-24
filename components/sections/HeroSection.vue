@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import anime from 'animejs/lib/anime.es.js'
+import { onMounted } from 'vue'
 import SplitText from '~/components/ui/SplitText.vue'
 
 onMounted(() => {
@@ -33,11 +33,60 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: calc(var(--header-height) + 4rem) 0 4rem; overflow: hidden; }
-.hero__glow { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-.hero__inner { position: relative; z-index: 2; text-align: center; }
-.hero__badge { display: inline-block; padding: 0.5rem 1.2rem; border-radius: var(--radius-pill); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-fg-dim); margin-bottom: 2.5rem; }
-.hero__title { font-size: var(--fs-h1); margin-bottom: 2rem; }
-.hero__lead { font-size: 1.15rem; color: var(--color-fg-mute); max-width: 600px; margin: 0 auto 3rem; }
-.hero__cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: calc(var(--header-height) + 4rem) 0 4rem;
+  overflow: hidden;
+}
+
+.hero__glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero__badge {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
+  margin-bottom: 2.5rem;
+}
+
+.hero__title {
+  font-size: var(--fs-h1);
+  margin-bottom: 2rem;
+}
+
+.hero__lead {
+  font-size: 1.15rem;
+  color: var(--color-fg-mute);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 </style>

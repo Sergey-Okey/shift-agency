@@ -1,7 +1,7 @@
 <template>
   <header class="header glass">
     <a href="#" class="logo" aria-label="SHIFT home">
-      <img src="/logo-shift.png" alt="SHIFT logo" class="logo__img" />
+      <img src="/logo.png" alt="SHIFT logo" class="logo__img" />
       <span class="logo__text">SHIFT<span class="text-accent">.</span></span>
     </a>
     <nav class="nav">
