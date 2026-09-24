@@ -21,7 +21,7 @@
   --glass-blur: 20px;
 
   /* Типографика */
-  --font-display: 'Anton', 'Arial Black', sans-serif;
+  --font-display: 'Coolvetica', 'Arial Black', sans-serif;
   --font-body: 'Raleway', system-ui, -apple-system, sans-serif;
 
   --fs-h1: clamp(3.5rem, 9vw, 9rem);

@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxt/fonts',
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxtjs/seo',
@@ -29,18 +28,9 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'ru' },
       title: 'SHIFT — Digital Agency',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#050505' },
       ],
     },
-  },
-
-  fonts: {
-    families: [
-      { name: 'Anton', provider: 'google', weights: [400] },
-      { name: 'Raleway', provider: 'google', weights: [300, 400, 500, 600, 800] },
-    ],
   },
 
   image: {
