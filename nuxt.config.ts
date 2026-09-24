@@ -18,6 +18,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
     telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
+    ogImage: {
+      secret: process.env.NUXT_OG_IMAGE_SECRET || 'shift-agency-og-secret-2026',
+    },
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shift-agency.ru',
     },
@@ -29,6 +32,9 @@ export default defineNuxtConfig({
       title: 'SHIFT — Digital Agency',
       meta: [
         { name: 'theme-color', content: '#050505' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
     },
   },
@@ -43,6 +49,10 @@ export default defineNuxtConfig({
     name: 'SHIFT Digital Agency',
     description: 'Современное digital-агентство: веб-разработка, дизайн, брендинг',
     defaultLocale: 'ru',
+  },
+
+  seo: {
+    treeShakeUseSeoMeta: false,
   },
 
   ogImage: {

@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import anime from 'animejs/lib/anime.es.js'
+import SplitText from '~/components/ui/SplitText.vue'
 
 onMounted(() => {
   anime({ targets: '.hero__glow', scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4], duration: 5000, loop: true, easing: 'easeInOutSine' })
