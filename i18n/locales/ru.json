@@ -69,15 +69,43 @@
     "items": {
       "core": {
         "title": "Core of Life",
-        "tag": "Vue · Nuxt · TS"
+        "tag": "Vue · Nuxt · TS",
+        "desc": "Таск-менеджер с древовидной структурой. Продуктивность через ограничение."
       },
       "carbon": {
         "title": "Carbon Core",
-        "tag": "Open Source"
+        "tag": "Open Source",
+        "desc": "Архитектурная база на Vue 3, Pinia, Vite. Переиспользуемая для проектов."
       },
       "noir": {
         "title": "Noir Series",
-        "tag": "Фотография"
+        "tag": "Фотография",
+        "desc": "Нуар-кадры и мини-фильмы. Съёмка на iPhone 15 в Log, монтаж в CapCut."
+      },
+      "aurora": {
+        "title": "Aurora Bank",
+        "tag": "Fintech · UI/UX",
+        "desc": "Мобильный банкинг с фокусом на приватность и скорость операций."
+      },
+      "nomad": {
+        "title": "Nomad Coffee",
+        "tag": "E-commerce",
+        "desc": "Интернет-магазин specialty-кофе с подписочной моделью и кастомизацией."
+      },
+      "vertex": {
+        "title": "Vertex Fitness",
+        "tag": "Branding · Web",
+        "desc": "Айдентика и сайт для сети премиум-фитнес-клубов. Ребрендинг с нуля."
+      },
+      "kinetic": {
+        "title": "Kinetic Studio",
+        "tag": "Motion · Web",
+        "desc": "Портфолио моушн-студии с WebGL-интро и интерактивными кейсами."
+      },
+      "terra": {
+        "title": "Terra Systems",
+        "tag": "SaaS Platform",
+        "desc": "B2B-платформа для управления строительными проектами. Дашборд + API."
       }
     }
   },
@@ -184,6 +212,16 @@
     "title": "Кто",
     "titleAccent": "мы?",
     "members": {
+      "sergey": {
+        "name": "Сергей Борисов",
+        "role": "Founder / Tech Lead",
+        "bio": "10 лет в веб-разработке. Специалист по Vue, Nuxt, архитектуре и продуктовой логике."
+      },
+      "anton": {
+        "name": "Антон Назаркин",
+        "role": "Product & Growth",
+        "bio": "Собирает продукт, запускает процессы и превращает трафик в результат."
+      },
       "alex": {
         "name": "Александр К.",
         "role": "Founder / Tech Lead",

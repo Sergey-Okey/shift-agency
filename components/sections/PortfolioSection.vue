@@ -86,16 +86,16 @@ const isCoarse = ref(false)
 let raf = 0
 const cleanups: Array<() => void> = []
 
-const projects = [
-  { title: 'Core of Life', tag: 'Vue · Nuxt · TS', desc: 'Таск-менеджер с древовидной структурой. Продуктивность через ограничение.', year: '2024', img: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80', link: '#' },
-  { title: 'Carbon Core', tag: 'Open Source', desc: 'Архитектурная база на Vue 3, Pinia, Vite. Переиспользуемая для проектов.', year: '2024', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80', link: '#' },
-  { title: 'Noir Series', tag: 'Photography', desc: 'Нуар-кадры и мини-фильмы. Съёмка на iPhone 15 в Log, монтаж в CapCut.', year: '2024', img: 'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?w=800&q=80', link: '#' },
-  { title: 'Aurora Bank', tag: 'Fintech · UI/UX', desc: 'Мобильный банкинг с фокусом на приватность и скорость операций.', year: '2023', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80', link: '#' },
-  { title: 'Nomad Coffee', tag: 'E-commerce', desc: 'Интернет-магазин specialty-кофе с подписочной моделью и кастомизацией.', year: '2023', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80', link: '#' },
-  { title: 'Vertex Fitness', tag: 'Branding · Web', desc: 'Айдентика и сайт для сети премиум-фитнес-клубов. Ребрендинг с нуля.', year: '2023', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80', link: '#' },
-  { title: 'Kinetic Studio', tag: 'Motion · Web', desc: 'Портфолио моушн-студии с WebGL-интро и интерактивными кейсами.', year: '2022', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80', link: '#' },
-  { title: 'Terra Systems', tag: 'SaaS Platform', desc: 'B2B-платформа для управления строительными проектами. Дашборд + API.', year: '2022', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80', link: '#' },
-]
+const projects = computed(() => [
+  { title: t('portfolio.items.core.title'), tag: t('portfolio.items.core.tag'), desc: t('portfolio.items.core.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.carbon.title'), tag: t('portfolio.items.carbon.tag'), desc: t('portfolio.items.carbon.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.noir.title'), tag: t('portfolio.items.noir.tag'), desc: t('portfolio.items.noir.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.aurora.title'), tag: t('portfolio.items.aurora.tag'), desc: t('portfolio.items.aurora.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.nomad.title'), tag: t('portfolio.items.nomad.tag'), desc: t('portfolio.items.nomad.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.vertex.title'), tag: t('portfolio.items.vertex.tag'), desc: t('portfolio.items.vertex.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.kinetic.title'), tag: t('portfolio.items.kinetic.tag'), desc: t('portfolio.items.kinetic.desc'), year: '2022', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80', link: '#' },
+  { title: t('portfolio.items.terra.title'), tag: t('portfolio.items.terra.tag'), desc: t('portfolio.items.terra.desc'), year: '2022', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80', link: '#' },
+])
 
 /* ============================================================
    ИЗОГНУТЫЙ ГОРИЗОНТ — карточки наклоняются от центра
@@ -218,7 +218,7 @@ function onKey(e: KeyboardEvent) {
 
   if (e.key === 'ArrowRight') {
     e.preventDefault()
-    scrollToIndex(Math.min(activeIndex.value + 1, projects.length - 1))
+    scrollToIndex(Math.min(activeIndex.value + 1, projects.value.length - 1))
   } else if (e.key === 'ArrowLeft') {
     e.preventDefault()
     scrollToIndex(Math.max(activeIndex.value - 1, 0))

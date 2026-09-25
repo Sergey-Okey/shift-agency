@@ -92,7 +92,7 @@ const cleanups: Array<() => void> = []
 
 const members = computed(() => [
   {
-    name: 'Сергей Борисов',
+    name: t('team.members.sergey.name'),
     role: t('team.members.sergey.role'),
     bio: t('team.members.sergey.bio'),
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
@@ -104,7 +104,7 @@ const members = computed(() => [
     ],
   },
   {
-    name: 'Антон Назаркин',
+    name: t('team.members.anton.name'),
     role: t('team.members.anton.role'),
     bio: t('team.members.anton.bio'),
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80',

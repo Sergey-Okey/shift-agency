@@ -69,15 +69,43 @@
     "items": {
       "core": {
         "title": "Core of Life",
-        "tag": "Vue · Nuxt · TS"
+        "tag": "Vue · Nuxt · TS",
+        "desc": "A task manager with a tree structure. Productivity through limitation."
       },
       "carbon": {
         "title": "Carbon Core",
-        "tag": "Open Source"
+        "tag": "Open Source",
+        "desc": "A reusable Vue 3, Pinia, and Vite architecture base for projects."
       },
       "noir": {
         "title": "Noir Series",
-        "tag": "Photography"
+        "tag": "Photography",
+        "desc": "Black-and-white frames and mini-films. Shot on iPhone 15 Log and edited in CapCut."
+      },
+      "aurora": {
+        "title": "Aurora Bank",
+        "tag": "Fintech · UI/UX",
+        "desc": "A mobile banking product focused on privacy and fast transactions."
+      },
+      "nomad": {
+        "title": "Nomad Coffee",
+        "tag": "E-commerce",
+        "desc": "A specialty coffee store with a subscription model and customisation."
+      },
+      "vertex": {
+        "title": "Vertex Fitness",
+        "tag": "Branding · Web",
+        "desc": "Brand identity and website for a premium fitness club network. Rebranding from scratch."
+      },
+      "kinetic": {
+        "title": "Kinetic Studio",
+        "tag": "Motion · Web",
+        "desc": "A motion studio portfolio with WebGL intro and interactive case studies."
+      },
+      "terra": {
+        "title": "Terra Systems",
+        "tag": "SaaS Platform",
+        "desc": "A B2B platform for managing construction projects. Dashboard + API."
       }
     }
   },
@@ -184,6 +212,16 @@
     "title": "Who",
     "titleAccent": "we are?",
     "members": {
+      "sergey": {
+        "name": "Sergey Borisov",
+        "role": "Founder / Tech Lead",
+        "bio": "10 years in web development. Specialist in Vue, Nuxt, architecture, and product logic."
+      },
+      "anton": {
+        "name": "Anton Nazarkin",
+        "role": "Product & Growth",
+        "bio": "Builds products, launches processes, and turns traffic into measurable results."
+      },
       "alex": {
         "name": "Alexander K.",
         "role": "Founder / Tech Lead",
