@@ -1,0 +1,279 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Work",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "",
+    "line1": "We build",
+    "line2": "digital",
+    "line3": "products",
+    "lead": "A team of experts combining creativity and technology to grow your business.",
+    "ctaPortfolio": "View work",
+    "ctaContact": "Start a project"
+  },
+  "about": {
+    "label": "",
+    "title": "We create",
+    "titleAccent": "websites",
+    "titleMiddle": " that",
+    "titleFinal": " convert",
+    "titleSuffix": "",
+    "stats": {
+      "experience": {
+        "title": "Years of experience",
+        "text": "We work with businesses of every scale — from startups to corporations."
+      },
+      "projects": {
+        "title": "Projects",
+        "text": "We launched over 32 projects across 15 niches — from e-commerce to fintech."
+      },
+      "happy": {
+        "title": "Happy clients",
+        "text": "Clients come back and recommend us to their partners."
+      }
+    }
+  },
+  "services": {
+    "label": "",
+    "title": "What we",
+    "titleAccent": "do",
+    "items": {
+      "web": {
+        "title": "Web Development",
+        "desc": "Building websites and web apps with Vue 3 and Nuxt. SPA, SSR, PWA."
+      },
+      "design": {
+        "title": "UI/UX Design",
+        "desc": "Interface design: research, prototypes, design systems."
+      },
+      "branding": {
+        "title": "Branding",
+        "desc": "Logos, brand identity, aesthetic systems, brand books."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "desc": "Digital growth: SEO, content, paid acquisition, analytics."
+      }
+    }
+  },
+  "portfolio": {
+    "label": "",
+    "title": "Our",
+    "titleAccent": "work",
+    "titleSuffix": "",
+    "items": {
+      "core": {
+        "title": "Core of Life",
+        "tag": "Vue · Nuxt · TS"
+      },
+      "carbon": {
+        "title": "Carbon Core",
+        "tag": "Open Source"
+      },
+      "noir": {
+        "title": "Noir Series",
+        "tag": "Photography"
+      }
+    }
+  },
+  "process": {
+    "label": "",
+    "title": "How we",
+    "titleAccent": "work?",
+    "steps": {
+      "analysis": {
+        "title": "Research",
+        "desc": "We study the business, competitors, and audience. We form hypotheses."
+      },
+      "strategy": {
+        "title": "Strategy",
+        "desc": "We create the concept, prototype, and technical specification."
+      },
+      "development": {
+        "title": "Development",
+        "desc": "Design, code, integrations, and testing."
+      },
+      "launch": {
+        "title": "Launch",
+        "desc": "Deployment, analytics, support, and growth."
+      }
+    }
+  },
+  "pricing": {
+    "label": "",
+    "title": "Transparent",
+    "titleAccent": "pricing",
+    "popular": "Popular",
+    "choose": "Choose",
+    "plans": {
+      "landing": {
+        "name": "Landing Page",
+        "price": "from $1,400",
+        "desc": "Single-page website for a product or service",
+        "feature1": "Full design package",
+        "feature2": "Responsive",
+        "feature3": "Lead form",
+        "feature4": "Basic SEO",
+        "feature5": "2 weeks"
+      },
+      "corporate": {
+        "name": "Corporate",
+        "price": "from $3,500",
+        "desc": "Multi-page website with admin panel",
+        "feature1": "Up to 10 pages",
+        "feature2": "CMS",
+        "feature3": "Analytics",
+        "feature4": "SEO optimization",
+        "feature5": "Integrations",
+        "feature6": "4–6 weeks"
+      },
+      "app": {
+        "name": "Web App",
+        "price": "from $8,700",
+        "desc": "Web application or SPA with logic",
+        "feature1": "Custom development",
+        "feature2": "API",
+        "feature3": "Authentication",
+        "feature4": "Dashboards",
+        "feature5": "8+ weeks"
+      }
+    }
+  },
+  "marquee": {
+    "design": "Design",
+    "development": "Development",
+    "branding": "Branding",
+    "marketing": "Marketing",
+    "strategy": "Strategy",
+    "innovation": "Innovation"
+  },
+  "testimonials": {
+    "label": "",
+    "title": "What people",
+    "titleAccent": "say",
+    "items": {
+      "anna": {
+        "text": "The team built a website that actually sells. Conversion tripled in the first month.",
+        "name": "Anna K.",
+        "role": "CEO, Brandly"
+      },
+      "igor": {
+        "text": "Professional approach, clear deadlines, and stunning design. It was a pleasure to work together.",
+        "name": "Igor S.",
+        "role": "Founder, TechLab"
+      },
+      "maria": {
+        "text": "They understood the brief immediately. They delivered something even better than we imagined.",
+        "name": "Maria V.",
+        "role": "CMO, GrowCo"
+      },
+      "dmitry": {
+        "text": "Great team. Fast, high quality, and detail-oriented throughout.",
+        "name": "Dmitry P.",
+        "role": "CTO, Fintech"
+      }
+    }
+  },
+  "team": {
+    "label": "",
+    "title": "Who",
+    "titleAccent": "we are?",
+    "members": {
+      "alex": {
+        "name": "Alexander K.",
+        "role": "Founder / Tech Lead",
+        "bio": "10 years in web development. Specialist in Vue, Nuxt, and architecture."
+      },
+      "maria": {
+        "name": "Maria S.",
+        "role": "Design Lead",
+        "bio": "UI/UX designer creating interfaces that sell."
+      },
+      "igor": {
+        "name": "Igor V.",
+        "role": "Fullstack Developer",
+        "bio": "Backend + Frontend. Node.js, TypeScript, PostgreSQL."
+      }
+    }
+  },
+  "faq": {
+    "label": "",
+    "title": "Frequently asked",
+    "titleAccent": "questions",
+    "asideText": "We collected the answers to the questions we hear most often. Didn’t find yours? Write to us.",
+    "asideCta": "Ask a question",
+    "items": {
+      "cost": {
+        "q": "How much does a website cost?",
+        "a": "The cost depends on the scope. Landing page — from $1,400, corporate website — from $3,500, web app — from $8,700. We prepare an exact estimate after a short brief."
+      },
+      "timeline": {
+        "q": "How long does development take?",
+        "a": "Landing page — 2 weeks, corporate website — 4–6 weeks, web app — from 8 weeks. Deadlines are fixed in the contract."
+      },
+      "contract": {
+        "q": "Do you work under a contract?",
+        "a": "Yes, always. Contract + 50% prepayment. The balance is paid after project delivery. We work with both legal entities and individuals."
+      },
+      "support": {
+        "q": "What does post-launch support include?",
+        "a": "The first month is free: edits, consultations, and small improvements. After that — from $350/month or hourly billing."
+      },
+      "update": {
+        "q": "Can you improve an existing website?",
+        "a": "Yes, if the project is on Vue/Nuxt or another modern stack. We run an audit and propose a plan for improvements."
+      },
+      "contact": {
+        "q": "How can I contact you?",
+        "a": "Write to {email} or Telegram. We reply within 24 hours."
+      }
+    }
+  },
+  "contact": {
+    "label": "",
+    "title": "Ready to",
+    "titleAccent": "discuss",
+    "titleSuffix": "your project?",
+    "desc": "Leave a request and we’ll get back to you within 24 hours.",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Tell us about your project",
+    "submit": "Send request",
+    "sending": "Sending...",
+    "validation": {
+      "nameMin": "At least 2 characters",
+      "emailInvalid": "Invalid email",
+      "messageMin": "At least 10 characters"
+    },
+    "success": "Thanks, {name}! Your request has been sent.",
+    "error": "We couldn’t send it. Please try again later.",
+    "phone": "+7 999 000-00-00",
+    "channels": {
+      "email": "Email",
+      "phone": "Phone",
+      "telegram": "Telegram"
+    }
+  },
+  "footer": {
+    "brand": "We create digital products that drive business growth.",
+    "navTitle": "Navigation",
+    "contactsTitle": "Contacts",
+    "madeBy": "Made with ♥ in Russia",
+    "nav": {
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Work",
+      "pricing": "Pricing"
+    }
+  },
+  "common": {
+    "years": "Years of experience",
+    "projects": "Projects",
+    "happy": "Happy clients"
+  }
+}

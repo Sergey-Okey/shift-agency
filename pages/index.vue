@@ -3,7 +3,6 @@
     <UiCustomCursor />
     <UiScrollProgress />
     <UiToastContainer />
-
     <LayoutAppHeader />
 
     <main>

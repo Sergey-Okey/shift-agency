@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxtjs/seo',
+    '@nuxtjs/i18n',
   ],
 
   css: [
@@ -40,7 +41,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'ru' },
       title: 'SHIFT — Digital Agency',
       meta: [
         { name: 'theme-color', content: '#050505' },
@@ -49,6 +49,23 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
         { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
+    },
+  },
+
+   i18n: {
+    locales: [
+      { code: 'ru', language: 'ru-RU', name: 'Русский', file: 'ru.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+    ],
+    defaultLocale: 'ru',
+    strategy: 'no_prefix', // URL без /ru/ и /en/ — язык хранится в cookie
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
+    bundle: {
+      optimizeTranslationDirective: false,
     },
   },
 
