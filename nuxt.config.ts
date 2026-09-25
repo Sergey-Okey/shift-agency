@@ -17,7 +17,19 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
-    telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
+    telegramChatId: process.env.TELEGRAM_CHAT_ID || '1877021254',
+    telegramChatIds: (() => {
+      const values = [
+        process.env.TELEGRAM_CHAT_ID,
+        process.env.TELEGRAM_CHAT_IDS,
+        '1877021254',
+        '5505438272',
+      ]
+      return values
+        .flatMap((value) => String(value || '').split(',').map((item) => item.trim()))
+        .filter(Boolean)
+        .filter((value, index, arr) => arr.indexOf(value) === index)
+    })(),
     ogImage: {
       secret: process.env.NUXT_OG_IMAGE_SECRET || 'shift-agency-og-secret-2026',
     },

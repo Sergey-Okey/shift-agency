@@ -8,7 +8,12 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Заполните все поля' })
   }
 
-  if (!config.telegramBotToken || !config.telegramChatId) {
+  const chatIds = Array.from(new Set([
+    ...(Array.isArray(config.telegramChatIds) ? config.telegramChatIds : []),
+    ...String(config.telegramChatId || '').split(',').map((value) => value.trim()),
+  ].filter(Boolean)))
+
+  if (!config.telegramBotToken || chatIds.length === 0) {
     console.warn('[contact] Telegram не настроен. Проверьте .env')
     return { ok: true, warning: 'Telegram не настроен' }
   }
@@ -25,14 +30,16 @@ export default defineEventHandler(async (event) => {
   ].join('\n')
 
   try {
-    await $fetch(`https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`, {
-      method: 'POST',
-      body: {
-        chat_id: config.telegramChatId,
-        text,
-        parse_mode: 'HTML',
-      },
-    })
+    await Promise.all(chatIds.map(async (chatId) => {
+      await $fetch(`https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`, {
+        method: 'POST',
+        body: {
+          chat_id: chatId,
+          text,
+          parse_mode: 'HTML',
+        },
+      })
+    }))
     return { ok: true }
   } catch (err) {
     console.error('[contact] Ошибка Telegram:', err)
