@@ -1,7 +1,14 @@
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 export function useMagnetic(selector = '.magnetic', strength = 0.3) {
   const cleanups: Array<() => void> = []
+
+  const isMobile = typeof window !== 'undefined' && (
+    window.matchMedia('(max-width: 768px)').matches ||
+    window.matchMedia('(pointer: coarse)').matches
+  )
+
+  if (isMobile) return
 
   onMounted(() => {
     const els = document.querySelectorAll<HTMLElement>(selector)

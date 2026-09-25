@@ -1,6 +1,13 @@
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 export function useParallax(selector = '.blob') {
+  const isMobile = typeof window !== 'undefined' && (
+    window.matchMedia('(max-width: 768px)').matches ||
+    window.matchMedia('(pointer: coarse)').matches
+  )
+
+  if (isMobile) return
+
   let raf = false
   function update() {
     const blobs = document.querySelectorAll<HTMLElement>(selector)

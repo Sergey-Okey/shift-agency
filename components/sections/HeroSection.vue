@@ -146,12 +146,9 @@ onMounted(() => {
     easing: 'cubicBezier(0.16, 1, 0.3, 1)',
   })
 
-  // Mouse-follow только на десктопе и без reduce-motion
+  // Mouse-follow only on desktop and without reduce-motion
   if (!reduced && !coarse) {
     window.addEventListener('mousemove', onMouseMove)
-    raf = requestAnimationFrame(loop)
-  } else {
-    // Всё равно оставим дрейф, но без мыши
     raf = requestAnimationFrame(loop)
   }
 })
