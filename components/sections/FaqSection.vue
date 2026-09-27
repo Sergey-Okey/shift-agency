@@ -28,7 +28,7 @@ const { t } = useI18n()
 const faqRef = ref<HTMLElement | null>(null)
 let observer: IntersectionObserver | null = null
 
-const email = 'hello@shift-agency.ru'
+const email = 'shiftagency@inbox.ru'
 
 const faq = computed(() => [
   { q: t('faq.items.cost.q'), a: t('faq.items.cost.a') },

@@ -21,7 +21,7 @@
           <!-- Контактные каналы -->
           <ul class="contact__channels reveal">
             <li class="contact__channel">
-              <a href="mailto:hello@shift-agency.ru" class="contact__channel-link">
+              <a href="mailto:shiftagency@inbox.ru" class="contact__channel-link">
                 <span class="contact__channel-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                     stroke-linejoin="round">
@@ -31,7 +31,7 @@
                 </span>
                 <span class="contact__channel-body">
                   <span class="contact__channel-label">{{ $t('contact.channels.email') }}</span>
-                  <span class="contact__channel-value">hello@shift-agency.ru</span>
+                  <span class="contact__channel-value">shiftagency@inbox.ru</span>
                 </span>
                 <span class="contact__channel-arrow" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"

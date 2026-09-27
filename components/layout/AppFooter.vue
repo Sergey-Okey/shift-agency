@@ -16,7 +16,7 @@
           </div>
           <div class="footer__col">
             <span class="footer__title">{{ $t('footer.contactsTitle') }}</span>
-            <a href="mailto:hello@shift-agency.ru">hello@shift-agency.ru</a>
+            <a href="mailto:shiftagency@inbox.ru">shiftagency@inbox.ru</a>
             <a href="tel:+79990000000">{{ $t('contact.phone') }}</a>
             <a href="#">Telegram</a>
             <a href="#">GitHub</a>

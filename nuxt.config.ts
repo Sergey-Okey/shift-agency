@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2025-01-01',
+  compatibilityDate: '2026-01-01',
   devtools: { enabled: true },
 
   modules: [
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       secret: process.env.NUXT_OG_IMAGE_SECRET || 'shift-agency-og-secret-2026',
     },
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shift-agency.ru',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shift-agency-add.vercel.app',
     },
   },
 
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://shift-agency.ru',
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://shift-agency-add.vercel.app',
     name: 'SHIFT Digital Agency',
     description: 'Современное digital-агентство: веб-разработка, дизайн, брендинг',
     defaultLocale: 'ru',

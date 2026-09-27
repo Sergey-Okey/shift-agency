@@ -100,7 +100,7 @@ const members = computed(() => [
     socials: [
       { icon: 'telegram', label: 'Telegram', href: '#' },
       { icon: 'github', label: 'GitHub', href: '#' },
-      { icon: 'mail', label: 'Email', href: 'mailto:hello@shift-agency.ru' },
+      { icon: 'mail', label: 'Email', href: 'mailto:shiftagency@inbox.ru' },
     ],
   },
   {
@@ -112,7 +112,7 @@ const members = computed(() => [
     socials: [
       { icon: 'telegram', label: 'Telegram', href: '#' },
       { icon: 'github', label: 'GitHub', href: '#' },
-      { icon: 'mail', label: 'Email', href: 'mailto:hello@shift-agency.ru' },
+      { icon: 'mail', label: 'Email', href: 'mailto:shiftagency@inbox.ru' },
     ],
   },
 ])
