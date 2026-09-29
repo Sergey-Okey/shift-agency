@@ -16,8 +16,14 @@
           </div>
           <div class="footer__col">
             <span class="footer__title">{{ $t('footer.contactsTitle') }}</span>
-            <a href="mailto:shiftagency@inbox.ru">shiftagency@inbox.ru</a>
-            <a href="https://t.me/shift_web" target="_blank" rel="noopener noreferrer">@shift_web</a>
+            <a href="mailto:shiftagency@inbox.ru" class="footer__link">
+              <Icon name="lucide:mail" size="16" aria-hidden="true" />
+              <span>shiftagency@inbox.ru</span>
+            </a>
+            <a href="https://t.me/shift_web" class="footer__link" target="_blank" rel="noopener noreferrer">
+              <Icon name="lucide:send" size="16" aria-hidden="true" />
+              <span>@shift_web</span>
+            </a>
           </div>
         </div>
       </div>
@@ -81,6 +87,12 @@ const year = new Date().getFullYear()
 .footer__col a {
   color: var(--color-fg-dim);
   transition: color 0.3s;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 .footer__col a:hover {
