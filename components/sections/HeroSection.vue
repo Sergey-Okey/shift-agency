@@ -27,7 +27,8 @@
       </h1>
 
       <p class="hero__lead hero-el hero-el--lead">
-        {{ $t('hero.lead') }}
+        {{ $t('hero.lead') }}<br>
+        {{ $t('hero.leadSecondary') }}
       </p>
 
       <div class="hero__cta hero-el hero-el--cta">
@@ -168,7 +169,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   position: relative;
-  padding: calc(var(--header-height) + 2rem) 0 4rem;
+  padding: calc(var(--header-height) + var(--space-md)) 0 var(--space-lg);
   overflow: hidden;
 }
 
@@ -197,8 +198,8 @@ onBeforeUnmount(() => {
   width: 1100px;
   height: 1100px;
   background: radial-gradient(circle,
-      rgba(186, 245, 20, 0.18) 0%,
-      rgba(110, 123, 255, 0.10) 35%,
+      rgba(var(--color-accent-rgb), 0.18) 0%,
+      rgba(var(--color-blue-rgb), 0.10) 35%,
       transparent 70%);
   filter: blur(60px);
   mix-blend-mode: screen;
@@ -209,8 +210,8 @@ onBeforeUnmount(() => {
   width: 620px;
   height: 620px;
   background: radial-gradient(circle,
-      rgba(186, 245, 20, 0.42) 0%,
-      rgba(186, 245, 20, 0.12) 40%,
+      rgba(var(--color-accent-rgb), 0.42) 0%,
+      rgba(var(--color-accent-rgb), 0.12) 40%,
       transparent 75%);
   filter: blur(50px);
   mix-blend-mode: screen;
@@ -222,7 +223,7 @@ onBeforeUnmount(() => {
   height: 220px;
   background: radial-gradient(circle,
       rgba(212, 255, 61, 0.75) 0%,
-      rgba(186, 245, 20, 0.25) 45%,
+      rgba(var(--color-accent-rgb), 0.25) 45%,
       transparent 75%);
   filter: blur(30px);
   mix-blend-mode: screen;
@@ -245,7 +246,7 @@ onBeforeUnmount(() => {
 
 .hero__title {
   font-size: var(--fs-h1);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-md);
   line-height: 1;
 }
 
@@ -267,7 +268,7 @@ onBeforeUnmount(() => {
 
 .hero__cta {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-sm);
   justify-content: center;
   flex-wrap: wrap;
   opacity: 0;
@@ -295,7 +296,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .hero {
-    padding: calc(var(--header-height) + 3rem) 0 4rem;
+    padding: calc(var(--header-height) + 3rem) 0 var(--space-lg);
   }
 
   .hero__glow-layer {

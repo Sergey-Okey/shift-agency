@@ -22,18 +22,24 @@
 
         <div ref="galleryRef" class="gallery" @scroll.passive="onGalleryScroll">
           <div class="gallery__track" :style="{ '--card-w': cardWidth + 'px' }">
-            <article v-for="(p, i) in projects" :key="i" :ref="(el) => (cardsRef[i] = el as HTMLElement)"
+            <article v-for="(p, i) in projects" :key="p.id" :ref="(el) => (cardsRef[i] = el as HTMLElement)"
               class="gallery__card" :class="{
                 'is-active': i === activeIndex,
                 'is-prev': i < activeIndex,
                 'is-next': i > activeIndex,
+                'is-personal': p.isPersonal,
               }" :data-magnetic="!isCoarse" @click="i !== activeIndex ? scrollToIndex(i) : null">
               <span class="gallery__bg" aria-hidden="true" />
               <span class="gallery__border" aria-hidden="true" />
               <span class="gallery__reflection" aria-hidden="true" />
 
+              <div v-if="p.isPersonal" class="gallery__personal-badge">
+                <Icon name="lucide:crown" size="15" aria-hidden="true" />
+                <span>{{ $t('portfolio.personal') }}</span>
+              </div>
+
               <div class="gallery__media">
-                <NuxtImg :src="p.img" :alt="p.title" format="webp" width="800" height="1100" loading="lazy" />
+                <img :src="p.img" :alt="`${p.title} — ${p.desc}`" width="800" height="1000" loading="lazy" />
                 <div class="gallery__overlay" aria-hidden="true" />
                 <div class="gallery__overlay-bottom" aria-hidden="true" />
               </div>
@@ -42,12 +48,8 @@
                 <span class="gallery__tag">{{ p.tag }}</span>
                 <h3 class="gallery__title">{{ p.title }}</h3>
                 <p class="gallery__desc">{{ p.desc }}</p>
-                <a :href="p.link || '#'" class="gallery__cta" @click.stop>
+                <a :href="p.link" class="gallery__cta" target="_blank" rel="noopener noreferrer" @click.stop>
                   <span>{{ $t('portfolio.view') }}</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M7 17L17 7M7 7h10v10" />
-                  </svg>
                 </a>
               </div>
             </article>
@@ -87,14 +89,10 @@ let raf = 0
 const cleanups: Array<() => void> = []
 
 const projects = computed(() => [
-  { title: t('portfolio.items.core.title'), tag: t('portfolio.items.core.tag'), desc: t('portfolio.items.core.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.carbon.title'), tag: t('portfolio.items.carbon.tag'), desc: t('portfolio.items.carbon.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.noir.title'), tag: t('portfolio.items.noir.tag'), desc: t('portfolio.items.noir.desc'), year: '2024', img: 'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.aurora.title'), tag: t('portfolio.items.aurora.tag'), desc: t('portfolio.items.aurora.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.nomad.title'), tag: t('portfolio.items.nomad.tag'), desc: t('portfolio.items.nomad.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.vertex.title'), tag: t('portfolio.items.vertex.tag'), desc: t('portfolio.items.vertex.desc'), year: '2023', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.kinetic.title'), tag: t('portfolio.items.kinetic.tag'), desc: t('portfolio.items.kinetic.desc'), year: '2022', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80', link: '#' },
-  { title: t('portfolio.items.terra.title'), tag: t('portfolio.items.terra.tag'), desc: t('portfolio.items.terra.desc'), year: '2022', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80', link: '#' },
+  { id: 'payouter', title: t('portfolio.items.payouter.title'), tag: t('portfolio.items.payouter.tag'), desc: t('portfolio.items.payouter.desc'), year: '2024', img: 'https://image.thum.io/get/width/800/crop/1000/noanimate/https://payouter.com/', link: 'https://payouter.com/', isPersonal: false },
+  { id: 'cof', title: t('portfolio.items.cof.title'), tag: t('portfolio.items.cof.tag'), desc: t('portfolio.items.cof.desc'), year: '2025', img: 'https://image.thum.io/get/width/800/crop/1000/noanimate/https://cof-board.com/onboarding', link: 'https://cof-board.com/onboarding', isPersonal: true },
+  { id: 'your-climate', title: t('portfolio.items.yourClimate.title'), tag: t('portfolio.items.yourClimate.tag'), desc: t('portfolio.items.yourClimate.desc'), year: '2024', img: 'https://image.thum.io/get/width/800/crop/1000/noanimate/https://liq-oxtf.vercel.app/', link: 'https://liq-oxtf.vercel.app/', isPersonal: false },
+  { id: 'liq', title: t('portfolio.items.liq.title'), tag: t('portfolio.items.liq.tag'), desc: t('portfolio.items.liq.desc'), year: '2025', img: 'https://image.thum.io/get/width/800/crop/1000/noanimate/https://lqd-blue.vercel.app/', link: 'https://lqd-blue.vercel.app/', isPersonal: false },
 ])
 
 /* ============================================================
@@ -665,6 +663,31 @@ onBeforeUnmount(() => {
   background: rgba(186, 245, 20, 0.04);
 }
 
+.gallery__card.is-personal .gallery__border {
+  border: 2px solid #d6b45f;
+  box-shadow: inset 0 0 28px rgba(214, 180, 95, 0.12), 0 0 24px rgba(214, 180, 95, 0.12);
+}
+
+.gallery__personal-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(214, 180, 95, 0.65);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.78);
+  color: #f1d58d;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
 .gallery__reflection {
   position: absolute;
   inset: 0;
@@ -813,7 +836,6 @@ onBeforeUnmount(() => {
 .gallery__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
   margin-top: 0.5rem;
   align-self: flex-start;
   padding: 0.6rem 1.1rem;
@@ -838,14 +860,6 @@ onBeforeUnmount(() => {
   border-color: var(--color-accent);
   color: var(--color-bg);
   transform: translateY(-2px);
-}
-
-.gallery__cta svg {
-  transition: transform 0.3s ease;
-}
-
-.gallery__cta:hover svg {
-  transform: translate(2px, -2px);
 }
 
 /* ============================================================

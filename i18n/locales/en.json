@@ -9,10 +9,11 @@
   },
   "hero": {
     "badge": "",
-    "line1": "We build",
-    "line2": "digital",
-    "line3": "products",
-    "lead": "A team of experts combining creativity and technology to grow your business.",
+    "line1": "Turning ideas",
+    "line2": "into working",
+    "line3": "web products.",
+    "lead": "We plan, design, and develop websites and web applications.",
+    "leadSecondary": "We support them after launch.",
     "ctaPortfolio": "View work",
     "ctaContact": "Start a project"
   },
@@ -41,23 +42,36 @@
   "services": {
     "label": "",
     "title": "What we",
-    "titleAccent": "do",
+    "titleAccent": "do?",
     "items": {
-      "web": {
-        "title": "Web Development",
-        "desc": "Building websites and web apps with Vue 3 and Nuxt. SPA, SSR, PWA."
+      "landing": {
+        "title": "Landing Pages",
+        "desc": "Single-page websites built for a specific goal: sales, a lead, or a presentation.",
+        "details": {
+          "identity": "Visual identity: brand style, colors, typography, and visual language.",
+          "structure": "Structure: page logic, sections, order, and messaging.",
+          "visual": "Visual design: a layout adapted for mobile and desktop.",
+          "tools": "Tools: online calculators, lead forms, messengers, analytics, CRM integrations, and more."
+        }
       },
-      "design": {
-        "title": "UI/UX Design",
-        "desc": "Interface design: research, prototypes, design systems."
+      "multipage": {
+        "title": "Multi-page Websites",
+        "desc": "Complete websites with sections, functionality, and data storage.",
+        "details": {
+          "database": "Databases: storing leads, users, and content.",
+          "logs": "Logs: recording actions and events for monitoring and debugging.",
+          "security": "Security: protecting data, access, and forms."
+        }
       },
-      "branding": {
-        "title": "Branding",
-        "desc": "Logos, brand identity, aesthetic systems, brand books."
-      },
-      "marketing": {
-        "title": "Marketing",
-        "desc": "Digital growth: SEO, content, paid acquisition, analytics."
+      "apps": {
+        "title": "Applications",
+        "desc": "Web and mobile applications built around business needs.",
+        "details": {
+          "web": "Web applications: run in a browser across platforms.",
+          "crossPlatform": "Cross-platform: one product for desktop, tablet, and phone.",
+          "mobile": "Mobile applications for iOS and Android.",
+          "integrations": "Integrations and functionality tailored to business processes."
+        }
       }
     }
   },
@@ -66,7 +80,30 @@
     "title": "Our",
     "titleAccent": "work",
     "titleSuffix": "",
+    "view": "View website",
+    "goTo": "Go to project",
+    "personal": "Personal project",
     "items": {
+      "payouter": {
+        "title": "Payouter",
+        "tag": "Payment platform",
+        "desc": "A service for accepting and sending fiat payments worldwide."
+      },
+      "cof": {
+        "title": "COF",
+        "tag": "Focus and planning",
+        "desc": "A personal project for managing tasks, habits, and progress."
+      },
+      "yourClimate": {
+        "title": "Your Climate",
+        "tag": "Climate control",
+        "desc": "An air-conditioning catalog with selection, installation, and setup services."
+      },
+      "liq": {
+        "title": "LIQ",
+        "tag": "Web project",
+        "desc": "A liquidation map for visualizing and analyzing data."
+      },
       "core": {
         "title": "Core of Life",
         "tag": "Vue · Nuxt · TS",
@@ -106,6 +143,11 @@
         "title": "Terra Systems",
         "tag": "SaaS Platform",
         "desc": "A B2B platform for managing construction projects. Dashboard + API."
+      },
+      "liq": {
+        "title": "LIQ",
+        "tag": "Web app",
+        "desc": "A web app about liquidations in the crypto market."
       }
     }
   },
@@ -215,12 +257,12 @@
       "sergey": {
         "name": "Sergey Borisov",
         "role": "Founder / Tech Lead",
-        "bio": "10 years in web development. Specialist in Vue, Nuxt, architecture, and product logic."
+        "bio": "4+ years in web development. Responsible for design, frontend, and backend: turning structure and meaning into a working product — with databases, integrations, and security."
       },
       "anton": {
         "name": "Anton Nazarkin",
         "role": "Product & Growth",
-        "bio": "Builds products, launches processes, and turns traffic into measurable results."
+        "bio": "Designs the structure and logic of the site, and plans how it will sell. Responsible for marketing, positioning, and client acquisition — so the product does more than exist, it brings results."
       },
       "alex": {
         "name": "Alexander K.",
@@ -248,7 +290,7 @@
     "items": {
       "cost": {
         "q": "How much does a website cost?",
-        "a": "The cost depends on the scope. Landing page — from $1,400, corporate website — from $3,500, web app — from $8,700. We prepare an exact estimate after a short brief."
+        "a": "The cost depends on the scope of work, the complexity of the logic, and the timeline. We review the task first and then prepare a precise estimate for your project."
       },
       "timeline": {
         "q": "How long does development take?",
@@ -278,6 +320,9 @@
     "titleAccent": "discuss",
     "titleSuffix": "your project?",
     "desc": "Leave a request and we’ll get back to you within 24 hours.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Email",
     "messagePlaceholder": "Tell us about your project",

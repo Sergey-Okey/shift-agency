@@ -16,9 +16,7 @@
 
       <div ref="statsRef" class="bento">
         <article v-for="(item, i) in items" :key="i" class="card" :class="[
-          i === 0 ? 'card--lg' : '',
-          i === 1 ? 'card--sm' : '',
-          i === 2 ? 'card--wide' : '',
+          i === 0 ? 'card--lg' : 'card--wide',
         ]" :style="{ '--stagger-delay': `${i * 130}ms` }" data-tilt>
           <!-- Слои стекла -->
           <span class="card__bg" aria-hidden="true" />
@@ -26,8 +24,8 @@
           <span class="card__border" aria-hidden="true" />
           <span class="card__spotlight" aria-hidden="true" />
 
-          <!-- Рейтинг — только для карточки "довольных" (i === 2) -->
-          <div v-if="i === 2" class="card__rating" aria-hidden="true">
+          <!-- Рейтинг — только для второй карточки -->
+          <div v-if="i === 1" class="card__rating" aria-hidden="true">
             <div class="card__stars">
               <span v-for="s in 5" :key="s" class="card__star" :class="{ 'is-filled': s <= 4 }">★</span>
             </div>
@@ -79,12 +77,6 @@ const items = computed(() => [
     dots: 4,
     title: t('about.stats.experience.title'),
     text: t('about.stats.experience.text'),
-  },
-  {
-    num: '32+',
-    dots: 7,
-    title: t('about.stats.projects.title'),
-    text: t('about.stats.projects.text'),
   },
   {
     num: '98%',

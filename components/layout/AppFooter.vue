@@ -17,15 +17,12 @@
           <div class="footer__col">
             <span class="footer__title">{{ $t('footer.contactsTitle') }}</span>
             <a href="mailto:shiftagency@inbox.ru">shiftagency@inbox.ru</a>
-            <a href="tel:+79990000000">{{ $t('contact.phone') }}</a>
-            <a href="#">Telegram</a>
-            <a href="#">GitHub</a>
+            <a href="https://t.me/shift_web" target="_blank" rel="noopener noreferrer">@shift_web</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
         <span>© {{ year }} SHIFT Digital Agency</span>
-        <span class="text-muted">{{ $t('footer.madeBy') }}</span>
       </div>
     </div>
   </footer>

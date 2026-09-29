@@ -7,14 +7,10 @@
 
     <main>
       <SectionsHeroSection />
-      <SectionsMarqueeSection />
-      <SectionsAboutSection />
       <SectionsServicesSection />
       <SectionsPortfolioSection />
-      <SectionsProcessSection />
       <SectionsPricingSection />
       <SectionsTeamSection />
-      <SectionsTestimonialsSection />
       <SectionsFaqSection />
       <SectionsContactSection />
     </main>

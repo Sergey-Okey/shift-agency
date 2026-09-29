@@ -50,28 +50,7 @@
             </li>
           </ul>
 
-          <!-- Соцсети -->
-          <div class="member__socials">
-            <a v-for="(s, si) in m.socials" :key="si" :href="s.href"
-              :target="s.href.startsWith('http') ? '_blank' : undefined"
-              :rel="s.href.startsWith('http') ? 'noopener' : undefined" class="member__social" :aria-label="s.label">
-              <svg v-if="s.icon === 'telegram'" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 3L3 10.5l5.5 2L10 19l3-4 5 3.5L21 3z" />
-                <path d="M8.5 12.5L21 3" />
-              </svg>
-              <svg v-else-if="s.icon === 'github'" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M15 22v-4a4 4 0 0 0-1-2.65c3.5-.5 7-1.5 7-7a5 5 0 0 0-1.4-3.5 4.6 4.6 0 0 0-.1-3.5s-1.1-.35-3.5 1.3a12 12 0 0 0-6 0C7.6 2.5 6.5 2.85 6.5 2.85a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 5 9.85c0 5.5 3.5 6.5 7 7A4 4 0 0 0 11 18v4" />
-              </svg>
-              <svg v-else-if="s.icon === 'mail'" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m2 7 10 7 10-7" />
-              </svg>
-            </a>
-          </div>
+
         </article>
       </div>
     </div>
@@ -95,25 +74,15 @@ const members = computed(() => [
     name: t('team.members.sergey.name'),
     role: t('team.members.sergey.role'),
     bio: t('team.members.sergey.bio'),
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
+    avatar: '/images/sergey.png',
     tags: ['Vue 3', 'Nuxt', 'TypeScript', 'UI/UX'],
-    socials: [
-      { icon: 'telegram', label: 'Telegram', href: '#' },
-      { icon: 'github', label: 'GitHub', href: '#' },
-      { icon: 'mail', label: 'Email', href: 'mailto:shiftagency@inbox.ru' },
-    ],
   },
   {
     name: t('team.members.anton.name'),
     role: t('team.members.anton.role'),
     bio: t('team.members.anton.bio'),
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80',
-    tags: ['Node.js', 'Backend', 'DevOps', 'API'],
-    socials: [
-      { icon: 'telegram', label: 'Telegram', href: '#' },
-      { icon: 'github', label: 'GitHub', href: '#' },
-      { icon: 'mail', label: 'Email', href: 'mailto:shiftagency@inbox.ru' },
-    ],
+    avatar: '/images/anton.png',
+    tags: ['Product', 'Growth', 'Strategy', 'Research'],
   },
 ])
 
@@ -369,8 +338,8 @@ onBeforeUnmount(() => {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2.25rem 2rem 1.75rem;
-  border-radius: 24px;
+  padding: 2.5rem 2.2rem 2rem;
+  border-radius: 26px;
   isolation: isolate;
   overflow: hidden;
   transform-style: preserve-3d;

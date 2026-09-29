@@ -7,7 +7,6 @@
     </div>
 
     <div class="container">
-      <!-- Заголовок -->
       <header class="services__head">
         <span class="section-label reveal">{{ $t('services.label') }}</span>
         <h2 class="section-title reveal">
@@ -15,19 +14,33 @@
         </h2>
       </header>
 
-      <!-- Список услуг -->
+      <!-- Услуги -->
       <div ref="listRef" class="services-list">
-        <article v-for="(s, i) in services" :key="i" class="service-row" :class="`service-row--c${i + 1}`">
-          <!-- Свечение за строкой (импульс при hover) -->
-          <span class="service-row__halo" aria-hidden="true" />
-          <!-- Aurora-градиент по строке -->
-          <span class="service-row__glow" aria-hidden="true" />
+        <article v-for="(service, index) in services" :key="service.id" class="service-card"
+          :class="`service-card--c${index + 1}`" tabindex="0">
+          <span class="service-card__halo" aria-hidden="true" />
+          <span class="service-card__glow" aria-hidden="true" />
 
-          <!-- Название -->
-          <h3 class="service-row__title">{{ s.title }}</h3>
+          <header class="service-card__head">
+            <span class="service-card__num">0{{ index + 1 }}</span>
+            <span class="service-card__icon" aria-hidden="true">
+              <Icon :name="service.icon" size="18" />
+            </span>
+          </header>
 
-          <!-- Описание -->
-          <p class="service-row__desc">{{ s.desc }}</p>
+          <h3 class="service-card__title">{{ service.title }}</h3>
+
+          <div class="service-card__body">
+            <p class="service-card__desc">{{ service.desc }}</p>
+
+            <ul class="service-card__details">
+              <li v-for="(detail, i) in service.details" :key="i" class="service-card__detail"
+                :style="{ '--reveal-delay': `${i * 70}ms` }">
+                <span class="service-card__detail-dot" aria-hidden="true" />
+                <span class="service-card__detail-text">{{ detail }}</span>
+              </li>
+            </ul>
+          </div>
         </article>
       </div>
     </div>
@@ -36,7 +49,7 @@
 
 <script setup lang="ts">
 import anime from 'animejs/lib/anime.es.js'
-import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const { t } = useI18n()
 
@@ -44,23 +57,65 @@ const listRef = ref<HTMLElement | null>(null)
 let observer: IntersectionObserver | null = null
 
 const services = computed(() => [
-  { title: t('services.items.web.title'), desc: t('services.items.web.desc') },
-  { title: t('services.items.design.title'), desc: t('services.items.design.desc') },
-  { title: t('services.items.branding.title'), desc: t('services.items.branding.desc') },
-  { title: t('services.items.marketing.title'), desc: t('services.items.marketing.desc') },
+  {
+    id: 'landing',
+    icon: 'lucide:zap',
+    title: t('services.items.landing.title'),
+    desc: t('services.items.landing.desc'),
+    details: [
+      t('services.items.landing.details.identity'),
+      t('services.items.landing.details.structure'),
+      t('services.items.landing.details.visual'),
+      t('services.items.landing.details.tools'),
+    ],
+  },
+  {
+    id: 'multipage',
+    icon: 'lucide:layers',
+    title: t('services.items.multipage.title'),
+    desc: t('services.items.multipage.desc'),
+    details: [
+      t('services.items.multipage.details.database'),
+      t('services.items.multipage.details.logs'),
+      t('services.items.multipage.details.security'),
+    ],
+  },
+  {
+    id: 'apps',
+    icon: 'lucide:smartphone',
+    title: t('services.items.apps.title'),
+    desc: t('services.items.apps.desc'),
+    details: [
+      t('services.items.apps.details.web'),
+      t('services.items.apps.details.crossPlatform'),
+      t('services.items.apps.details.mobile'),
+      t('services.items.apps.details.integrations'),
+    ],
+  },
 ])
 
+/* ============================================================
+   Анимация появления
+   ============================================================ */
 onMounted(async () => {
   await nextTick()
   if (!listRef.value) return
 
-  anime.set('.service-row', { opacity: 0, translateY: 40 })
-  anime.set('.service-row__title', { opacity: 0, translateY: 20 })
-  anime.set('.service-row__desc', { opacity: 0 })
+  const cards = listRef.value.querySelectorAll('.service-card')
+  const nums = listRef.value.querySelectorAll('.service-card__num')
+  const icons = listRef.value.querySelectorAll('.service-card__icon')
+  const titles = listRef.value.querySelectorAll('.service-card__title')
+  const descriptions = listRef.value.querySelectorAll('.service-card__desc')
+
+  anime.set(cards, { opacity: 0, translateY: 40 })
+  anime.set(nums, { opacity: 0, translateY: 20 })
+  anime.set(icons, { opacity: 0, scale: 0.7 })
+  anime.set(titles, { opacity: 0, translateY: 20 })
+  anime.set(descriptions, { opacity: 0 })
 
   const play = () => {
     anime({
-      targets: '.service-row',
+      targets: cards,
       opacity: [0, 1],
       translateY: [40, 0],
       duration: 900,
@@ -68,18 +123,34 @@ onMounted(async () => {
       easing: 'cubicBezier(0.16, 1, 0.3, 1)',
     })
     anime({
-      targets: '.service-row__title',
+      targets: nums,
       opacity: [0, 1],
       translateY: [20, 0],
       duration: 800,
-      delay: anime.stagger(110, { start: 200 }),
+      delay: anime.stagger(110, { start: 150 }),
       easing: 'cubicBezier(0.16, 1, 0.3, 1)',
     })
     anime({
-      targets: '.service-row__desc',
+      targets: icons,
+      opacity: [0, 1],
+      scale: [0.7, 1],
+      duration: 700,
+      delay: anime.stagger(110, { start: 200 }),
+      easing: 'cubicBezier(0.34, 1.56, 0.64, 1)',
+    })
+    anime({
+      targets: titles,
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 800,
+      delay: anime.stagger(110, { start: 280 }),
+      easing: 'cubicBezier(0.16, 1, 0.3, 1)',
+    })
+    anime({
+      targets: descriptions,
       opacity: [0, 1],
       duration: 800,
-      delay: anime.stagger(110, { start: 400 }),
+      delay: anime.stagger(110, { start: 450 }),
       easing: 'easeOutQuad',
     })
   }
@@ -97,7 +168,6 @@ onMounted(async () => {
     },
     { threshold: 0.15 },
   )
-
   observer.observe(listRef.value)
 })
 
@@ -106,22 +176,21 @@ onBeforeUnmount(() => observer?.disconnect())
 
 <style scoped>
 /* ============================================================
-   ЦВЕТА КАЖДОЙ УСЛУГИ
+   ЦВЕТА УСЛУГ
    ============================================================ */
-.service-row--c1 {
+.service-card--c1 {
   --row-color: 186, 245, 20;
+  --card-offset: 0ms;
 }
 
-.service-row--c2 {
+.service-card--c2 {
   --row-color: 110, 123, 255;
+  --card-offset: 90ms;
 }
 
-.service-row--c3 {
+.service-card--c3 {
   --row-color: 245, 161, 90;
-}
-
-.service-row--c4 {
-  --row-color: 20, 245, 201;
+  --card-offset: 180ms;
 }
 
 /* ============================================================
@@ -132,9 +201,7 @@ onBeforeUnmount(() => observer?.disconnect())
   overflow: hidden;
 }
 
-/* ============================================================
-   AURORA
-   ============================================================ */
+/* ---------- Aurora ---------- */
 .aurora {
   position: absolute;
   inset: 0;
@@ -205,11 +272,7 @@ onBeforeUnmount(() => observer?.disconnect())
 .services__head {
   position: relative;
   z-index: 2;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-}
-
-.services__head .section-title {
-  margin-bottom: 0;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 /* ============================================================
@@ -218,76 +281,74 @@ onBeforeUnmount(() => observer?.disconnect())
 .services-list {
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
 /* ============================================================
-   СТРОКА
+   КАРТОЧКА
    ============================================================ */
-.service-row {
+.service-card {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  padding: clamp(1.75rem, 3vw, 2.5rem) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 1.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.025);
+  color: inherit;
   cursor: none;
   isolation: isolate;
-}
-
-/* ---------- Aurora-градиент по строке ---------- */
-.service-row__glow {
-  position: absolute;
-  inset: -1px 0;
-  pointer-events: none;
-  z-index: -1;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(var(--row-color), 0.04) 25%,
-      rgba(var(--row-color), 0.1) 50%,
-      rgba(var(--row-color), 0.04) 75%,
-      transparent 100%);
-  opacity: 0;
-  transform: scaleX(0.95);
-  transform-origin: left center;
+  overflow: hidden;
   transition:
-    opacity 0.5s ease,
-    transform 0.6s var(--ease-out-expo);
+    border-color 0.4s ease,
+    background 0.4s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
 }
 
-.service-row:hover .service-row__glow {
-  opacity: 1;
-  transform: scaleX(1);
+.service-card:hover,
+.service-card:focus-visible {
+  border-color: rgba(var(--row-color), 0.4);
+  background: rgba(var(--row-color), 0.035);
+  transform: translateY(-6px);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.5),
+    0 0 40px -12px rgba(var(--row-color), 0.15);
+  outline: none;
 }
 
-/* ============================================================
-   СВЕЧЕНИЕ ЗА СТРОКОЙ — импульс при hover
-   ============================================================ */
-.service-row__halo {
+.service-card:focus-visible {
+  outline: 2px solid rgba(var(--row-color), 0.6);
+  outline-offset: 4px;
+}
+
+/* ---------- Halo ---------- */
+.service-card__halo {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 110%;
-  height: 220%;
+  height: 160%;
   transform: translate(-50%, -50%) scale(0.9);
   pointer-events: none;
-  z-index: -2;
+  z-index: -1;
   background: radial-gradient(ellipse at center,
-      rgba(var(--row-color), 0.4) 0%,
-      rgba(var(--row-color), 0.15) 35%,
-      rgba(var(--row-color), 0.05) 60%,
+      rgba(var(--row-color), 0.35) 0%,
+      rgba(var(--row-color), 0.12) 35%,
+      rgba(var(--row-color), 0.04) 60%,
       transparent 80%);
   filter: blur(60px);
   opacity: 0;
-  transition:
-    opacity 0.6s ease,
-    transform 0.7s var(--ease-out-expo);
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.service-row:hover .service-row__halo {
+.service-card:hover .service-card__halo,
+.service-card:focus-visible .service-card__halo {
   opacity: 1;
-  animation: haloPulse 2.4s ease-in-out infinite;
+  animation: haloPulse 2.6s ease-in-out infinite;
 }
 
 @keyframes haloPulse {
@@ -306,94 +367,346 @@ onBeforeUnmount(() => observer?.disconnect())
   }
 }
 
+/* ---------- Radial glow ---------- */
+.service-card__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(120% 100% at 50% 0%,
+      rgba(var(--row-color), 0.12) 0%,
+      rgba(var(--row-color), 0.04) 40%,
+      transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.service-card:hover .service-card__glow,
+.service-card:focus-visible .service-card__glow {
+  opacity: 1;
+}
+
 /* ============================================================
-   НАЗВАНИЕ — без сжатия, дефолтный трекинг
+   HEAD — номер + иконка
    ============================================================ */
-.service-row__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--color-fg);
+.service-card__head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-card__num {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: rgba(var(--row-color), 0.7);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(var(--row-color), 0.25);
+  border-radius: 100px;
+  background: rgba(var(--row-color), 0.06);
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+.service-card:hover .service-card__num,
+.service-card:focus-visible .service-card__num {
+  background: rgba(var(--row-color), 0.14);
+  border-color: rgba(var(--row-color), 0.55);
+  color: rgb(var(--row-color));
+}
+
+.service-card__icon {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.03);
   transition:
     color 0.4s ease,
-    transform 0.6s var(--ease-out-expo);
-  will-change: transform;
+    border-color 0.4s ease,
+    background 0.4s ease,
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.service-row:hover .service-row__title {
+.service-card:hover .service-card__icon,
+.service-card:focus-visible .service-card__icon {
   color: rgb(var(--row-color));
-  transform: translateX(12px);
+  border-color: rgba(var(--row-color), 0.5);
+  background: rgba(var(--row-color), 0.1);
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.service-card__icon :deep(svg) {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: block;
 }
 
 /* ============================================================
-   ОПИСАНИЕ
+   TITLE
    ============================================================ */
-.service-row__desc {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--color-fg-mute);
-  max-width: 320px;
+.service-card__title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display, 'Inter'), sans-serif;
+  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+  margin-bottom: 1.25rem;
   transition: color 0.4s ease;
 }
 
-.service-row:hover .service-row__desc {
-  color: rgba(255, 255, 255, 0.88);
+.service-card:hover .service-card__title,
+.service-card:focus-visible .service-card__title {
+  color: rgb(var(--row-color));
+}
+
+/* ============================================================
+   BODY — GRID STACK
+   ============================================================ */
+.service-card__body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  align-items: start;
+}
+
+.service-card__desc,
+.service-card__details {
+  grid-area: 1 / 1;
+}
+
+/* ---------- Описание (idle) — при hover размывается ---------- */
+.service-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-fg-mute);
+  transition:
+    opacity 0.4s ease,
+    filter 0.4s ease,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover .service-card__desc,
+.service-card:focus-visible .service-card__desc {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+/* ---------- Детали (hover) ---------- */
+.service-card__details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.service-card:hover .service-card__details,
+.service-card:focus-visible .service-card__details {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.service-card__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease;
+}
+
+.service-card:hover .service-card__detail,
+.service-card:focus-visible .service-card__detail {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--card-offset, 0ms));
+}
+
+.service-card:hover .service-card__detail-text,
+.service-card:focus-visible .service-card__detail-text {
+  color: #fff;
+}
+
+.service-card__detail-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.55em;
+  border-radius: 50%;
+  background: rgb(var(--row-color));
+  box-shadow: 0 0 8px rgba(var(--row-color), 0.6);
+}
+
+.service-card__detail-text {
+  flex: 1;
+  min-width: 0;
+  transition: color 0.4s ease;
 }
 
 /* ============================================================
    АДАПТИВ
    ============================================================ */
-@media (max-width: 1024px) {
-  .service-row {
-    grid-template-columns: 1fr auto;
-    gap: 1.25rem;
+
+/* Планшет — 2 колонки */
+@media (max-width: 900px) {
+  .services-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-row__desc {
-    max-width: 100%;
+  .service-card:last-child {
+    grid-column: 1 / -1;
+    min-height: 280px;
   }
 
-  .service-row__halo {
+  .service-card {
+    min-height: 320px;
+  }
+
+  .service-card__halo {
     width: 90%;
     filter: blur(45px);
   }
 }
 
+/* Мобилка — 1 колонка, без hover, всё видно сразу */
 @media (max-width: 640px) {
-  .service-row {
+  .services-list {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
-    padding: 1.5rem 0;
+    gap: 1rem;
   }
 
-  .service-row__desc {
-    font-size: 0.88rem;
-    margin-top: 0;
+  .service-card {
+    min-height: 0;
+    padding: 1.5rem 1.35rem 1.35rem;
   }
 
-  .service-row__halo {
+  .service-card:last-child {
+    grid-column: auto;
+    min-height: 0;
+  }
+
+  .service-card__halo {
     display: none;
+  }
+
+  .aurora__blob {
+    animation: none;
+  }
+
+  .service-card:hover,
+  .service-card:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .service-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .service-card__desc {
+    position: static;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .service-card__details {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    gap: 0.55rem;
+  }
+
+  .service-card__detail {
+    opacity: 1;
+    transform: none;
+    font-size: 0.82rem;
+  }
+
+  .service-card__details::before {
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 0 0 0.25rem;
+    background: rgba(var(--row-color), 0.18);
+  }
+
+  .service-card__head {
+    margin-bottom: 1.15rem;
+  }
+
+  .service-card__title {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media (pointer: coarse) {
-
-  .service-row,
-  .service-row__title {
+  .service-card {
     cursor: auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-  .service-row,
-  .service-row__title,
-  .service-row__desc,
-  .service-row__glow,
-  .service-row__halo {
+  .service-card,
+  .service-card__halo,
+  .service-card__glow,
+  .service-card__num,
+  .service-card__icon,
+  .service-card__title,
+  .service-card__desc,
+  .service-card__details,
+  .service-card__detail {
     transition: none !important;
     animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .service-card__desc {
+    opacity: 1 !important;
+  }
+
+  .service-card__details,
+  .service-card__detail {
+    opacity: 1 !important;
   }
 
   .aurora__blob {
